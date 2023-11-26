@@ -150,7 +150,7 @@
     "karma-sourcemap-loader": "^0.4.0",
     "karma-webpack": "^5.0.0",
     "lerna": "^7.4.2",
-    "markdownlint-cli2": "^0.10.0",
+    "markdownlint-cli2": "^0.11.0",
     "mocha": "^10.2.0",
     "nyc": "^15.1.0",
     "patch-package": "^7.0.2",
