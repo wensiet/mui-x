@@ -32,7 +32,7 @@ function RatingInputValue(props) {
     >
       <Rating
         name="custom-rating-filter-operator"
-        placeholder="Filter value"
+        title="Filter value"
         value={Number(item.value)}
         onChange={handleFilterChange}
         precision={0.5}
