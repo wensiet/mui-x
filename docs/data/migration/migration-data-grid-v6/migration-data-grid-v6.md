@@ -230,6 +230,33 @@ Below are described the steps you need to make to migrate from v6 to v7.
 
 - The filter panel no longer uses the native version of the [`Select`](https://mui.com/material-ui/react-select/) component for all components.
 
+### Accessibility
+
+- The `ariaV7` experimental flag has been removed and the Data Grid now uses the improved accessibility implementation by default.
+  If you were using the `ariaV7` flag, you can remove it from the `experimentalFeatures` prop:
+
+  ```diff
+  -<DataGrid experimentalFeatures={{ ariaV7: true }} />
+  +<DataGrid />
+  ```
+
+  The most notable changes that might affect your application or tests are:
+
+  - The `role="grid"` attribute along with related ARIA attributes are now applied to the inner `div` element instead of the root `div` element:
+
+    ```diff
+    -<div class="MuiDataGrid-root" role="grid" aria-colcount="5" aria-rowcount="101" aria-multiselectable="false">
+    +<div class="MuiDataGrid-root">
+       <div class="MuiDataGrid-toolbarContainer"></div>
+    -    <div class="MuiDataGrid-main"></div>
+    +    <div class="MuiDataGrid-main" role="grid" aria-colcount="5" aria-rowcount="101" aria-multiselectable="false"></div>
+       <div class="MuiDataGrid-footerContainer"></div>
+     </div>
+    ```
+
+  - When [Tree data](/x/react-data-grid/tree-data/) feature is used, the grid role is now `role="treegrid"` instead of `role="grid"`.
+  - The Data Grid cells now have `role="gridcell"` instead of `role="cell"`.
+
 <!-- ### Editing
 
 - -->
