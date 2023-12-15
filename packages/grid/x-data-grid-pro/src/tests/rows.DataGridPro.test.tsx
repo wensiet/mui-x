@@ -450,7 +450,7 @@ describe('<DataGridPro /> - Rows', () => {
       virtualScroller.scrollTop = 10e6; // scroll to the bottom
       act(() => virtualScroller.dispatchEvent(new Event('scroll')));
 
-      const lastCell = $('[role="row"]:last-child [role="cell"]:first-child')!;
+      const lastCell = $('[role="row"]:last-child [role="gridcell"]:first-child')!;
       expect(lastCell).to.have.text('995');
       expect(renderingZone.children.length).to.equal(
         Math.floor((height - 1) / rowHeight) + rowBuffer,
@@ -541,7 +541,7 @@ describe('<DataGridPro /> - Rows', () => {
 
         const dimensions = apiRef.current.state.dimensions;
         const lastCell = document.querySelector(
-          '[role="row"]:last-child [role="cell"]:first-child',
+          '[role="row"]:last-child [role="gridcell"]:first-child',
         )!;
         expect(lastCell).to.have.text('31');
         expect(virtualScroller.scrollHeight).to.equal(
@@ -563,7 +563,7 @@ describe('<DataGridPro /> - Rows', () => {
         virtualScroller.dispatchEvent(new Event('scroll'));
 
         const lastCell = document.querySelector(
-          '[role="row"]:last-child [role="cell"]:first-child',
+          '[role="row"]:last-child [role="gridcell"]:first-child',
         )!;
         expect(lastCell).to.have.text('99');
         expect(virtualScroller.scrollTop).to.equal(0);
@@ -580,7 +580,7 @@ describe('<DataGridPro /> - Rows', () => {
         const virtualScroller = document.querySelector('.MuiDataGrid-virtualScroller')!;
 
         const lastCell = document.querySelector(
-          '[role="row"]:last-child [role="cell"]:first-child',
+          '[role="row"]:last-child [role="gridcell"]:first-child',
         )!;
         expect(lastCell).to.have.text('6');
         const rows = document.querySelectorAll('.MuiDataGrid-row[role="row"]')!;
@@ -702,7 +702,7 @@ describe('<DataGridPro /> - Rows', () => {
     it('should allow to disable virtualization', () => {
       render(<TestCase />);
       expect(document.querySelectorAll('[role="row"][data-rowindex]')).to.have.length(10);
-      expect(document.querySelectorAll('[role="cell"]')).to.have.length(10 * 10);
+      expect(document.querySelectorAll('[role="gridcell"]')).to.have.length(10 * 10);
     });
 
     it('should render the correct rows when changing pages', () => {

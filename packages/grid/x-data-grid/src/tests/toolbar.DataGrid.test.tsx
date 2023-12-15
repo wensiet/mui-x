@@ -1,6 +1,6 @@
 import * as React from 'react';
 import { createRenderer, fireEvent, screen, act } from '@mui-internal/test-utils';
-import { getColumnHeadersTextContent } from 'test/utils/helperFn';
+import { getColumnHeadersTextContent, getRootElement } from 'test/utils/helperFn';
 import { expect } from 'chai';
 import {
   DataGrid,
@@ -51,7 +51,7 @@ describe('<DataGrid /> - Toolbar', () => {
         maxHeight: `${Math.floor(value)}px`,
       });
 
-      expect(getComputedStyle(screen.getAllByRole('cell')[1]).height).to.equal(
+      expect(getComputedStyle(screen.getAllByRole('gridcell')[1]).height).to.equal(
         `${Math.floor(value)}px`,
       );
     }
@@ -128,11 +128,11 @@ describe('<DataGrid /> - Toolbar', () => {
         );
       }
       const { setProps } = render(<Test />);
-      expect(screen.getByRole('grid')).to.have.class(gridClasses['root--densityStandard']);
+      expect(getRootElement()).to.have.class(gridClasses['root--densityStandard']);
       setProps({ density: 'compact' });
-      expect(screen.getByRole('grid')).to.have.class(gridClasses['root--densityCompact']);
+      expect(getRootElement()).to.have.class(gridClasses['root--densityCompact']);
       setProps({ density: 'comfortable' });
-      expect(screen.getByRole('grid')).to.have.class(gridClasses['root--densityComfortable']);
+      expect(getRootElement()).to.have.class(gridClasses['root--densityComfortable']);
     });
   });
 

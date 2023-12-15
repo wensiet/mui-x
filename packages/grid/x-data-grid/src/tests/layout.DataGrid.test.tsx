@@ -23,6 +23,7 @@ import {
   getCell,
   getRow,
   sleep,
+  getRootElement,
 } from 'test/utils/helperFn';
 
 const getVariable = (name: string) => $('.MuiDataGrid-root')!.style.getPropertyValue(name);
@@ -779,7 +780,7 @@ describe('<DataGrid /> - Layout & warnings', () => {
             <DataGrid {...baselineProps} autoHeight />
           </div>,
         );
-        expect(screen.getByRole('grid')).to.have.class(gridClasses.autoHeight);
+        expect(getRootElement()).to.have.class(gridClasses.autoHeight);
       });
     });
 
@@ -985,9 +986,7 @@ describe('<DataGrid /> - Layout & warnings', () => {
       </ThemeProvider>,
     );
 
-    expect(window.getComputedStyle(screen.getByRole('grid')).backgroundColor).to.equal(
-      'rgb(255, 0, 0)',
-    );
+    expect(window.getComputedStyle(getRootElement()).backgroundColor).to.equal('rgb(255, 0, 0)');
     expect(window.getComputedStyle(getColumnHeaderCell(0)).backgroundColor).to.equal(
       'rgb(255, 255, 0)',
     );
@@ -1016,7 +1015,7 @@ describe('<DataGrid /> - Layout & warnings', () => {
       </ThemeProvider>,
     );
 
-    expect(screen.getByRole('grid')).toHaveComputedStyle({
+    expect(getRootElement()).toHaveComputedStyle({
       color: 'rgb(0, 0, 255)',
     });
   });
@@ -1100,7 +1099,7 @@ describe('<DataGrid /> - Layout & warnings', () => {
       );
 
       await waitFor(() => {
-        expect(screen.getByRole('grid')).toHaveComputedStyle({ width: '400px' });
+        expect(getRootElement()).toHaveComputedStyle({ width: '400px' });
       });
     });
 
@@ -1114,7 +1113,7 @@ describe('<DataGrid /> - Layout & warnings', () => {
       );
 
       await waitFor(() => {
-        expect(screen.getByRole('grid')).toHaveComputedStyle({ width: '400px' });
+        expect(getRootElement()).toHaveComputedStyle({ width: '400px' });
       });
     });
   });
